@@ -6,23 +6,9 @@ import Slider from "@mui/material/Slider";
 //For debug purposes
 import Input from "@mui/material/Input";
 
-import makeStyles from "@mui/styles/makeStyles";
-
 import PropTypes from "prop-types";
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    flexGrow: 1
-  },
-  paper: {
-    padding: theme.spacing(2),
-    textAlign: "center",
-    color: theme.palette.text.secondary
-  }
-}));
-
 export default function LinkedSliders(props) {
-  const classes = useStyles();
 
   const handleDebugChange = (index, id, e) => {
     console.log("debug");
@@ -104,7 +90,7 @@ export default function LinkedSliders(props) {
   };
 
   return (
-    <Paper className={classes.root}>
+    <Paper  >
       <Typography>
         {"" == (props.title || "") ? "" : <b>{props.title}:&nbsp;</b>}
         {props.description}

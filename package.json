@@ -1,14 +1,14 @@
 {
   "name": "linkedSliders",
-  "version": "1.0.0",
+  "version": "0.9.0",
   "description": "A set of linked sliders using the mui.com slider widgets.",
-  "main": "index.js",
+  "main": "./lib/LinkedSliders",
   "repository": "https://github.com:mgmodell/linkedSliders",
   "author": "Micah Gideon Modell <micah.modell@gmail.com>",
   "private": false,
   "license": "MIT",
   "scripts": {
-    "build": "rm -rf dist && NODE_ENV=production babel src/lib --out-dir dist --copy-files"
+    "build": "webpack"
   },
   "files": [
     "dist"
@@ -20,13 +20,22 @@
     "npm"
   ],
   "dependencies": {
-    "@babel/polyfill": "^7.12.1",
-    "@babel/preset-react": "^7.16.7",
+    "@emotion/react": "^11.8.1",
+    "@emotion/styled": "^11.8.1",
     "@mui/material": "^5.4.4"
   },
   "devDependencies": {
     "@babel/cli": "^7.17.6",
     "@babel/core": "^7.17.5",
-    "@babel/preset-env": "^7.16.11"
+    "@babel/plugin-proposal-function-bind": "^7.16.7",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-react": "^7.16.7",
+    "babel-loader": "^8.2.3",
+    "path": "^0.12.7",
+    "prop-types": "^15.8.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "webpack": "^5.70.0",
+    "webpack-cli": "^4.9.2"
   }
 }
