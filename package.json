@@ -2,13 +2,13 @@
   "name": "linkedSliders",
   "version": "0.9.0",
   "description": "A set of linked sliders using the mui.com slider widgets.",
-  "main": "./lib/LinkedSliders",
+  "main": "dist/LinkedSliders.js",
   "repository": "https://github.com:mgmodell/linkedSliders",
   "author": "Micah Gideon Modell <micah.modell@gmail.com>",
   "private": false,
   "license": "MIT",
   "scripts": {
-    "build": "webpack"
+    "build": "webpack --mode production"
   },
   "files": [
     "dist"
