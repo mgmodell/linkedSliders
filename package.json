@@ -1,41 +1,57 @@
 {
   "name": "linkedSliders",
-  "version": "0.9.0",
+  "version": "0.1.0",
   "description": "A set of linked sliders using the mui.com slider widgets.",
-  "main": "dist/LinkedSliders.js",
   "repository": "https://github.com:mgmodell/linkedSliders",
   "author": "Micah Gideon Modell <micah.modell@gmail.com>",
-  "private": false,
   "license": "MIT",
-  "scripts": {
-    "build": "webpack --mode production"
+  "private": false,
+  "main": "dist/index.js",
+  "files": [ "dist", "README.md" ],
+  "babel": {
+    "presets": [
+      "@babel/preset-react"
+    ]
   },
-  "files": [
-    "dist"
-  ],
-  "keywords": [
-    "react",
-    "typescript",
-    "mui",
-    "npm"
-  ],
   "dependencies": {
     "@emotion/react": "^11.8.1",
     "@emotion/styled": "^11.8.1",
-    "@mui/material": "^5.4.4"
+    "@mui/material": "^5.5.0",
+    "@testing-library/jest-dom": "^5.16.2",
+    "@testing-library/react": "^12.1.3",
+    "@testing-library/user-event": "^13.5.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "^2.1.3",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "publish:npm": "rm -rf dist && mkdir dist &&  babel src/component -d dist --copy-files"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   },
   "devDependencies": {
     "@babel/cli": "^7.17.6",
-    "@babel/core": "^7.17.5",
-    "@babel/plugin-proposal-function-bind": "^7.16.7",
-    "@babel/preset-env": "^7.16.11",
-    "@babel/preset-react": "^7.16.7",
-    "babel-loader": "^8.2.3",
-    "path": "^0.12.7",
-    "prop-types": "^15.8.1",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "webpack": "^5.70.0",
-    "webpack-cli": "^4.9.2"
+    "@babel/preset-react": "^7.16.7"
   }
 }

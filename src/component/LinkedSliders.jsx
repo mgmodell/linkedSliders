@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
@@ -24,7 +24,7 @@ export default function LinkedSliders(props) {
     if (newValue >= props.sum) {
       newValue = props.sum;
       lContributions.forEach(contribution => {
-        if (contribution.userId != id) {
+        if (contribution.userId !== id) {
           contribution.value = 0;
         } else {
           contribution.value = newValue;
@@ -43,7 +43,7 @@ export default function LinkedSliders(props) {
       //If one decreases, the rest split the gain
       for (var counter = 0; counter < lContributions.length; counter++) {
         const lContribution = lContributions[counter];
-        if (lContribution.userId != id) {
+        if (lContribution.userId !== id) {
           var cVal = lContribution.value - split;
           lContribution.value = cVal;
         } else {
@@ -60,10 +60,19 @@ export default function LinkedSliders(props) {
       return total;
     }, 0);
 
+    const applyAdjust = (negVal, element) =>{
+      element.value += reduceBy;
+      if (element.value < 0) {
+        negVal += element.value;
+        element.value = 0;
+      }
+      return negVal;
+    }
+
     //Reallocate from those that have gone negative
-    while (remainder != 0) {
+    while (remainder !== 0) {
       const toDec = lContributions.reduce((progress, element) => {
-        if (id != element.id && 0 != element.value) {
+        if (id !== element.id && 0 !== element.value) {
           progress.push(element);
         }
         return progress;
@@ -71,19 +80,14 @@ export default function LinkedSliders(props) {
       const modulo = remainder % toDec.length;
       //Apply the remainder to the largest element
       toDec.sort((a, b) => {
-        b.value - a.value;
+        return (b.value - a.value);
       });
       toDec[0].value += modulo;
       var reduceBy = Math.ceil((remainder - modulo) / toDec.length);
+
+
       //Apply the reductions and adjustment
-      remainder = toDec.reduce((negVal, element) => {
-        element.value += reduceBy;
-        if (element.value < 0) {
-          negVal += element.value;
-          element.value = 0;
-        }
-        return negVal;
-      }, 0);
+      remainder = toDec.reduce( applyAdjust, 0);
     }
 
     props.updateContributions(lContributions);
@@ -92,7 +96,7 @@ export default function LinkedSliders(props) {
   return (
     <Paper  >
       <Typography>
-        {"" == (props.title || "") ? "" : <b>{props.title}:&nbsp;</b>}
+        {"" === (props.title || "") ? "" : <b>{props.title}:&nbsp;</b>}
         {props.description}
       </Typography>
       {props.contributions.map((contribution, index) => {
