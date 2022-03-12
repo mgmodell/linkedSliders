@@ -4,7 +4,7 @@ import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import Slider from "@mui/material/Slider";
 //For debug purposes
-import Input from "@mui/material/Input";
+//import Input from "@mui/material/Input";
 
 import PropTypes from "prop-types";
 
